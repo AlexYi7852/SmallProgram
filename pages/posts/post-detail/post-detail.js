@@ -9,12 +9,8 @@ Page({
 
   },
 
-  onCollectionTap: function (event) {
-    var key = wx.getStorageSync('key')
-  },
-
   onShareTap: function (event) {
-    wx.removeStorageSync("key")
+    // wx.removeStorageSync("key")
   },
 
   /**
@@ -23,9 +19,33 @@ Page({
   onLoad: function (options) {
     var postId = options.id
     this.setData({ data: postsData.postList[postId] })
-    // 缓存的上限不能超过10MB
-    wx.setStorageSync("key", "生命周期函数")
-    wx.setStorageSync("esion", "人来人往")
+    
+    var postsCollected = wx.getStorageSync("posts_collected")
+    if (postsCollected) {
+      var collected = postsCollected[postId]
+      this.setData(
+        { collected: collected }
+      )
+    }
+    else {
+      var postsCollected = {}
+      postsCollected[postId] = false
+      wx.setStorageSync("posts_collected", postsCollected)
+    }
+  },
+
+  onCollectionTap: function (event) {
+    var postsCollected = wx.getStorageSync("posts_collected")
+    var collected = postsCollected[this.data]
+    // 收藏变成未收藏， 未收藏变成收藏
+    collected = !collected
+    postsCollected[this.data] = collected
+    // 更新文章是否收藏的缓存值
+    wx.setStorageSync("posts_collected", postsCollected)
+    // 更新数据绑定变量，从而实现切换图片
+    this.setData(
+      { collected: collected }
+    )
   },
 
   /**
