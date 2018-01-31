@@ -12,8 +12,8 @@
   <text class="title">{{ data.title }}</text>
   <view class="tool">
     <view class="circle-img">
-      <image src="/images/icon/collection.png"></image>
-      <image class="share-img" src="/images/icon/share.png"></image>
+      <image catchtap="onCollectionTap" src="/images/icon/collection.png"></image>
+      <image catchtap="onShareTap" class="share-img" src="/images/icon/share.png"></image>
     </view>
     <view class="horizon"></view>
   </view>
