@@ -21,9 +21,9 @@ Page({
     this.setData({ data: postsData.postList[postId] })
     var postsCollected = wx.getStorageSync("posts_collected")
     if (postsCollected) {
-      var postCollected = postsCollected[postId]
+      var collected = postsCollected[postId]
       this.setData(
-        { collected: postCollected }
+        { collected: collected }
       )
     }
     else {
@@ -45,6 +45,11 @@ Page({
     this.setData(
       { collected: collected }
     )
+    // 收藏或取消收藏提示信息
+    wx.showToast({
+      title: collected ?  '收藏成功' : "取消成功",
+      duration: 1000,
+    })
   },
 
   /**
