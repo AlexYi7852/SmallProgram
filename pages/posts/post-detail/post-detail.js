@@ -9,10 +9,6 @@ Page({
 
   },
 
-  onShareTap: function (event) {
-    // wx.removeStorageSync("key")
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -34,6 +30,23 @@ Page({
   },
 
   onCollectionTap: function (event) {
+    this.getPostCollectedAsy()
+  },
+  getPostCollectedAsy: function () {
+    var that = this
+    wx.getStorage({
+      key: "posts_collected",
+      success: function (res) {
+        var postsCollected = res.data;
+        var collected = postsCollected[that.data.data.postId];
+        // 收藏变成未收藏， 未收藏变成收藏
+        collected = !collected;
+        postsCollected[that.data.data.postId] = collected
+        that.showToast(postsCollected, collected)
+      }
+    })
+  },
+  getPostCollectedSyc: function () {
     var postsCollected = wx.getStorageSync("posts_collected")
     var collected = postsCollected[this.data.data.postId]
     // 收藏变成未收藏， 未收藏变成收藏
@@ -73,8 +86,30 @@ Page({
     )
     // 收藏或取消收藏提示信息
     wx.showToast({
-      title: collected ?  '收藏成功' : "取消成功",
+      title: collected ? '收藏成功' : "取消成功",
       duration: 1000,
     })
-  }
+  },
+
+  onShareTap: function (event) {
+    var itemList = [
+      "分享给微信好友",
+      "分享到朋友圈",
+      "分享到QQ",
+      "分享到微博"
+    ]
+    wx.showActionSheet({
+      itemList: itemList,
+      itemColor: "#405f80",
+      success: function (res) {
+        console.log(res)
+        // res.cancel 用户是否点击了取消按钮
+        // res.tapIndex 数字元素的序号，从0开始
+        wx.showModal({
+          title: '用户' + itemList[res.tapIndex],
+          content: "用户是否取消" + res.cancel + '现在无法实现分享功能，什么时候能支持呢',
+        })
+      }
+    })
+  },
 })
