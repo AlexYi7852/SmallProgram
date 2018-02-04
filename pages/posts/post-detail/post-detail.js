@@ -19,12 +19,11 @@ Page({
   onLoad: function (options) {
     var postId = options.id
     this.setData({ data: postsData.postList[postId] })
-    
     var postsCollected = wx.getStorageSync("posts_collected")
     if (postsCollected) {
-      var collected = postsCollected[postId]
+      var postCollected = postsCollected[postId]
       this.setData(
-        { collected: collected }
+        { collected: postCollected }
       )
     }
     else {
@@ -36,10 +35,10 @@ Page({
 
   onCollectionTap: function (event) {
     var postsCollected = wx.getStorageSync("posts_collected")
-    var collected = postsCollected[this.data]
+    var collected = postsCollected[this.data.data.postId]
     // 收藏变成未收藏， 未收藏变成收藏
     collected = !collected
-    postsCollected[this.data] = collected
+    postsCollected[this.data.data.postId] = collected
     // 更新文章是否收藏的缓存值
     wx.setStorageSync("posts_collected", postsCollected)
     // 更新数据绑定变量，从而实现切换图片
