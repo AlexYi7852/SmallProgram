@@ -30,7 +30,8 @@ Page({
   },
 
   onCollectionTap: function (event) {
-    this.getPostCollectedAsy()
+    this.getPostCollectedSyc()
+    // this.getPostCollectedAsy()
   },
   getPostCollectedAsy: function () {
     var that = this
