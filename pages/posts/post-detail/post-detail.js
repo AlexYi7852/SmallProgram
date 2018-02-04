@@ -39,6 +39,32 @@ Page({
     // 收藏变成未收藏， 未收藏变成收藏
     collected = !collected
     postsCollected[this.data.data.postId] = collected
+    this.showToast(postsCollected, collected)
+    // this.showModal(postsCollected, collected)
+  },
+  showModal: function (postsCollected, collected) {
+    var that = this
+    wx.showModal({
+      title: '收藏',
+      content: collected ? '是否收藏？' : '是否取消收藏？',
+      showCancel: "true",
+      cancelText: "取消",
+      cancelColor: "#333",
+      confirmText: "确认",
+      confirmColor: "#405f80",
+      success: function (res) {
+        if (res.confirm) {
+          // 更新文章是否收藏的缓存值
+          wx.setStorageSync("posts_collected", postsCollected)
+          // 更新数据绑定变量，从而实现切换图片
+          that.setData(
+            { collected: collected }
+          )
+        }
+      }
+    })
+  },
+  showToast: function (postsCollected, collected) {
     // 更新文章是否收藏的缓存值
     wx.setStorageSync("posts_collected", postsCollected)
     // 更新数据绑定变量，从而实现切换图片
@@ -50,54 +76,5 @@ Page({
       title: collected ?  '收藏成功' : "取消成功",
       duration: 1000,
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })
