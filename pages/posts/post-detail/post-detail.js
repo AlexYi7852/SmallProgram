@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isPlayingMusic : false
   },
 
   /**
@@ -113,4 +113,26 @@ Page({
       }
     })
   },
+
+  onMusicTap: function (event) {
+    var isPlayingMusic = this.data.isPlayingMusic
+    if (isPlayingMusic) {
+      wx.pauseBackgroundAudio()
+      this.setData({
+        isPlayingMusic: false
+      })
+    }
+    else {
+      wx.playBackgroundAudio({
+        dataUrl: "http://ws.stream.qqmusic.qq.com/C100000Zn0vS4fKKo8.m4a?fromtag=38",
+        title: "沉默是金-张国荣",
+        coverImgUrl: "http://y.gtimg.cn/music/photo_new/T002R150x150M000003at0mJ2YrR2H.jpg?max_age=2592000"
+      })
+      this.setData({
+        isPlayingMusic: true
+      })
+    }
+    
+    
+  }
 })
