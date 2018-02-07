@@ -115,6 +115,8 @@ Page({
   },
 
   onMusicTap: function (event) {
+    var postId = this.data.data.postId
+    var data = postsData.postList[postId]
     var isPlayingMusic = this.data.isPlayingMusic
     if (isPlayingMusic) {
       wx.pauseBackgroundAudio()
@@ -124,9 +126,9 @@ Page({
     }
     else {
       wx.playBackgroundAudio({
-        dataUrl: "http://ws.stream.qqmusic.qq.com/C100000Zn0vS4fKKo8.m4a?fromtag=38",
-        title: "沉默是金-张国荣",
-        coverImgUrl: "http://y.gtimg.cn/music/photo_new/T002R150x150M000003at0mJ2YrR2H.jpg?max_age=2592000"
+        dataUrl: data.music.url,
+        title: data.music.title,
+        coverImgUrl: data.music.coverImgUrl
       })
       this.setData({
         isPlayingMusic: true

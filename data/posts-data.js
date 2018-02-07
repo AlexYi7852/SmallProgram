@@ -11,7 +11,12 @@ var local_database = [
     headImgSrc: "/images/post/crab.png",
     author: "林白衣",
     dateTime: "24小时之前",
-    detail: "熱情就算熄滅了，分手這一晚也重要"
+    detail: "熱情就算熄滅了，分手這一晚也重要",
+    music: {
+      url: "http://ws.stream.qqmusic.qq.com/C100003507bR0gDKBm.m4a?fromtag=38",
+      title: "夜夜夜夜-齐秦",
+      coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000001TEc6V0kjpVC.jpg?max_age=2592000"
+    }
   },
   {
     date: "Sep 12 2222",
@@ -25,7 +30,12 @@ var local_database = [
     headImgSrc: "/images/post/bl.png",
     author: "alex",
     dateTime: "12小时之前",
-    detail: "甜言蜜語謊話嬉笑，多給我一點切勿缺少"
+    detail: "甜言蜜語謊話嬉笑，多給我一點切勿缺少",
+    music: {
+      url: "http://ws.stream.qqmusic.qq.com/C100003GdCmG4NkEOR.m4a?fromtag=38",
+      title: "鬼迷心窍-李宗盛",
+      coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000002xOmp62kqSic.jpg?max_age=2592000"
+    }
   },
   {
     date: "Nov 13 3333",
@@ -39,7 +49,12 @@ var local_database = [
     headImgSrc: "/images/post/cat.png",
     author: "清风",
     dateTime: "13小时之前",
-    detail: "話題勁了也不緊要，吻我至淒冷的神效"
+    detail: "話題勁了也不緊要，吻我至淒冷的神效",
+    music: {
+      url: "http://ws.stream.qqmusic.qq.com/C100004HLusI2lLjZy.m4a?fromtag=38",
+      title: "女儿情-万晓利",
+      coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000004Wv5BO30pPc0.jpg?max_age=2592000"
+    }
   },
   {
     date: "Sep 14 4444",
@@ -53,7 +68,12 @@ var local_database = [
     headImgSrc: "/images/post/sls.jpg",
     author: "子晴",
     dateTime: "14小时之前",
-    detail: "芳華鬧市燈光普照，然而共你已再沒破曉"
+    detail: "芳華鬧市燈光普照，然而共你已再沒破曉",
+    music: {
+      url: "http://ws.stream.qqmusic.qq.com/C100002mWVx72p8Ugp.m4a?fromtag=38",
+      title: "恋恋风尘-老狼",
+      coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000001VaXQX1Z1Imq.jpg?max_age=2592000",
+    }
   },
   {
     date: "Nov 15 5555",
@@ -67,7 +87,12 @@ var local_database = [
     headImgSrc: "/images/post/vr.png",
     author: "blue",
     dateTime: "15小时之前",
-    detail: "紅眼睛幽幽的看著這孤城，如同苦笑擠出的高興"
+    detail: "紅眼睛幽幽的看著這孤城，如同苦笑擠出的高興",
+    music: {
+      url: "http://ws.stream.qqmusic.qq.com/C100000Zn0vS4fKKo8.m4a?fromtag=38",
+      title: "沉默是金-张国荣",
+      coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000003at0mJ2YrR2H.jpg?max_age=2592000"
+    }
   }
 ]
 
