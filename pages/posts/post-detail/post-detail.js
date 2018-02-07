@@ -1,4 +1,5 @@
 var postsData = require("../../../data/posts-data.js")
+var app = getApp()
 
 Page({
 
@@ -27,17 +28,27 @@ Page({
       postsCollected[postId] = false
       wx.setStorageSync("posts_collected", postsCollected)
     }
+    if (app.globalData.g_isPlayingMusic) {
+      this.setData({
+        isPlayingMusic: true
+      })
+    }
+    this.setMusicState()
+  },
+  setMusicState: function(){
     // 监听音乐总控开关，改变头部图片
     var that = this
     wx.onBackgroundAudioPlay(function () {
       that.setData({
         isPlayingMusic: true
       })
+      app.globalData.g_isPlayingMusic = true
     })
     wx.onBackgroundAudioPause(function () {
       that.setData({
         isPlayingMusic: false
       })
+      app.globalData.g_isPlayingMusic = false
     })
   },
 
