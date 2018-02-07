@@ -103,7 +103,6 @@ Page({
       itemList: itemList,
       itemColor: "#405f80",
       success: function (res) {
-        console.log(res)
         // res.cancel 用户是否点击了取消按钮
         // res.tapIndex 数字元素的序号，从0开始
         wx.showModal({
@@ -134,7 +133,5 @@ Page({
         isPlayingMusic: true
       })
     }
-    
-    
   }
 })
