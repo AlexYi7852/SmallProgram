@@ -1,6 +1,11 @@
 var app = getApp()
 
 Page({
+  data: {
+    inTheaters: {},
+    comingSoon: {},
+    top250: {}
+  },
   // RESTFul API JSON
   // SOAP XML
 
@@ -10,12 +15,12 @@ Page({
     var inTheatersURL = doubanBase + "/v2/movie/in_theaters" + dataCount // 正在热映
     var comingSoonURL = doubanBase + "/v2/movie/coming_soon" + dataCount // 即将上映
     var top250URL = doubanBase + "/v2/movie/top250" + dataCount
-    this.getMovieListData(inTheatersURL)
-    // this.getMovieListData(comingSoonURL)
-    // this.getMovieListData(top250URL)
+    this.getMovieListData(inTheatersURL, "inTheaters")
+    this.getMovieListData(comingSoonURL, "comingSoon")
+    this.getMovieListData(top250URL, "top250")
   },
 
-  getMovieListData: function(url){
+  getMovieListData: function(url, settedKey){
     var that = this
     wx.request({
       url: url,
@@ -26,7 +31,7 @@ Page({
       },
       success: function (res) {
         // success
-        that.processDoubanData(res.data.subjects)
+        that.processDoubanData(res.data.subjects, settedKey)
       },
       fail: function (res) {
         // fail
@@ -35,7 +40,7 @@ Page({
     })
   },
 
-  processDoubanData: function(moviesDouban){
+  processDoubanData: function (moviesDouban, settedKey){
     var movies = []
     for (var index in moviesDouban){
       var subject = moviesDouban[index]
@@ -51,8 +56,8 @@ Page({
       }
       movies.push(temp)
     }
-    this.setData({
-      movies: movies
-    })
+    var readyData = {}
+    readyData[settedKey] = { movies: movies }
+    this.setData(readyData)
   }
 })
