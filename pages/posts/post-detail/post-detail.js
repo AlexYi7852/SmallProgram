@@ -16,7 +16,27 @@ Page({
   onLoad: function (options) {
     var postId = options.id
     this.setData({ data: postsData.postList[postId] })
+    // var currentCountItem = wx.getStorageSync("look_count")
     var postsCollected = wx.getStorageSync("posts_collected")
+    // if (currentCountItem) {
+    //   var count = currentCountItem[postId]
+    //   if (count) {
+    //     count = count + 1
+    //   }
+    //   else {
+    //     count = 1
+    //   }
+    //   currentCountItem[postId] = count
+    //   wx.setStorageSync("look_count", currentCountItem)
+    //   this.setData(
+    //     { count: count }
+    //   )
+    // }
+    // else {
+    //   var currentCountItem = {}
+    //   currentCountItem[postId] = 1
+    //   wx.setStorageSync("look_count", currentCountItem)
+    // }
     if (postsCollected) {
       var collected = postsCollected[postId]
       this.setData(

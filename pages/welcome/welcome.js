@@ -12,7 +12,7 @@ Page({
     //   url: '../posts/posts',
     // });
 
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../posts/posts',
     })
   },
