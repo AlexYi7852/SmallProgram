@@ -10,18 +10,18 @@ Page({
   // RESTFul API JSON
   // SOAP XML
 
-  onLoad: function(event){
+  onLoad: function (event) {
     var doubanBase = app.globalData.doubanBase
     var dataCount = "?start=0&count=3"
     var inTheatersURL = doubanBase + "/v2/movie/in_theaters" + dataCount // 正在热映
     var comingSoonURL = doubanBase + "/v2/movie/coming_soon" + dataCount // 即将上映
     var top250URL = doubanBase + "/v2/movie/top250" + dataCount
-    this.getMovieListData(inTheatersURL, "inTheaters")
-    this.getMovieListData(comingSoonURL, "comingSoon")
-    this.getMovieListData(top250URL, "top250")
+    this.getMovieListData(inTheatersURL, "inTheaters", "正在热映")
+    this.getMovieListData(comingSoonURL, "comingSoon", "即将上映")
+    this.getMovieListData(top250URL, "top250", "Top250")
   },
 
-  getMovieListData: function(url, settedKey){
+  getMovieListData: function (url, settedKey, catetoryTitle) {
     var that = this
     wx.request({
       url: url,
@@ -32,7 +32,7 @@ Page({
       },
       success: function (res) {
         // success
-        that.processDoubanData(res.data.subjects, settedKey)
+        that.processDoubanData(res.data.subjects, settedKey, catetoryTitle)
       },
       fail: function (res) {
         // fail
@@ -41,12 +41,12 @@ Page({
     })
   },
 
-  processDoubanData: function (moviesDouban, settedKey){
+  processDoubanData: function (moviesDouban, settedKey, catetoryTitle) {
     var movies = []
-    for (var index in moviesDouban){
+    for (var index in moviesDouban) {
       var subject = moviesDouban[index]
       var title = subject.title
-      if (title.length >= 6){
+      if (title.length >= 6) {
         title = title.substring(0, 6) + "..."
       }
       var temp = {
@@ -59,8 +59,11 @@ Page({
       movies.push(temp)
     }
     var readyData = {}
-    readyData[settedKey] = { movies: movies }
-    console.log(readyData)    
+    readyData[settedKey] = {
+      catetoryTitle: catetoryTitle,
+      movies: movies
+    }
+    console.log(readyData)
     this.setData(readyData)
   }
 })
