@@ -1,0 +1,2 @@
+/* pages/movies/movies/movie/movie.wxss */
+@import "../stars/stars-template.wxss"
