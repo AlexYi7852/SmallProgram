@@ -11,7 +11,7 @@ Page({
   },
   // RESTFul API JSON
   // SOAP XML
-
+  
   onLoad: function (event) {
     var doubanBase = app.globalData.doubanBase
     var dataCount = "?start=0&count=3"
@@ -22,25 +22,33 @@ Page({
     this.getMovieListData(comingSoonURL, "comingSoon", "即将上映")
     this.getMovieListData(top250URL, "top250", "豆瓣Top250")
   },
-
+  
   onMoreTap: function(event){
     var catetory = event.currentTarget.dataset.catetory
     wx.navigateTo({
       url: 'more-movie/more-movie?catetory=' + catetory,
     })
   },
+  // 关闭搜索页面回到电影页面
+  onCancelImgTap: function (event){
+    this.setData({
+      containerShow: true,
+      searchPanelShow: false
+    })
+  },
 
+  // 输入框聚焦时触发
   onBindFocus: function(event){
     this.setData({
       containerShow: false,
       searchPanelShow: true
     })
   },
-   
+  // 输入框失去焦点时触发
   onBindChange: function(event){
     console.log("onBindChange")
   },
-
+  // 获取电影数据列表
   getMovieListData: function (url, settedKey, catetoryTitle) {
     var that = this
     wx.request({
@@ -60,7 +68,7 @@ Page({
       }
     })
   },
-
+  // 处理电影数据函数
   processDoubanData: function (moviesDouban, settedKey, catetoryTitle) {
     var movies = []
     for (var index in moviesDouban) {

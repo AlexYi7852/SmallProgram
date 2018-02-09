@@ -3,6 +3,7 @@
 <view class='search'>
   <icon type="search" class='search-img' size="13" color="#405f80"></icon>
   <input type="text" placeholder='血战刚巨冷、你的名字' placeholder-class='placeholder' bindfocus='onBindFocus' bindchange="onBindChange"></input>
+  <image wx:if="{{ searchPanelShow }}" class="cancel-img" src='/images/icon/xx.png' bindtap='onCancelImgTap'></image>
 </view>
 <view class='container' wx:if="{{ containerShow }}">
   <view class="movies-template">

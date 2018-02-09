@@ -23,6 +23,12 @@
   margin-left: 20rpx;
 }
 
+.cancel-img{
+  width: 30rpx;
+  height: 30rpx;
+  margin: auto 0 auto 10rpx;
+}
+
 .search input{
   height: 100%;
   width: 600rpx;
