@@ -22,8 +22,9 @@ Page({
   },
 
   onMoreTap: function(event){
+    var catetory = event.currentTarget.dataset.catetory
     wx.navigateTo({
-      url: 'more-movie/more-movie',
+      url: 'more-movie/more-movie?catetory=' + catetory,
     })
   },
 
@@ -69,7 +70,7 @@ Page({
       catetoryTitle: catetoryTitle,
       movies: movies
     }
-    console.log(readyData)
+    // console.log(readyData)
     this.setData(readyData)
   }
 })
