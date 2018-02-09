@@ -71,9 +71,21 @@ Page({
       totalCount: this.data.totalCount += 20
     })
     wx.hideNavigationBarLoading()
+    wx.stopPullDownRefresh()
   },
-  
-  onScrollLower: function(event){
+  // 下拉刷新
+  onPullDownRefresh: function(event){
+    var refreshUrl = this.data.requestUrl + "?start=0&count=20"
+    this.setData({
+      movies: {},
+      isEmpty: true,
+      totalCount: 0
+    })
+    util.getMovieListData(refreshUrl, this.processDoubanData)
+    wx.showNavigationBarLoading()
+  },
+  //上拉加载更多数据
+  onReachBottom: function(event){
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20"
     util.getMovieListData(nextUrl, this.processDoubanData)
     wx.showNavigationBarLoading()
