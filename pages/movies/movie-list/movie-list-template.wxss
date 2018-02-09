@@ -11,7 +11,7 @@
 }
 
 .movie-head {
-  padding: 30rpx 20rpx 22rpx;
+  padding: 18rpx 20rpx 22rpx;
   /* display: flex;
   flex-direction: row;
   justify-content: space-between; */

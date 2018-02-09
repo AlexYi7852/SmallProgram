@@ -5,7 +5,9 @@ Page({
   data: {
     inTheaters: {},
     comingSoon: {},
-    top250: {}
+    top250: {},
+    containerShow: true, // 控制电影页面显示状态
+    searchPanelShow: false // 控制搜索页面显示状态
   },
   // RESTFul API JSON
   // SOAP XML
@@ -26,6 +28,17 @@ Page({
     wx.navigateTo({
       url: 'more-movie/more-movie?catetory=' + catetory,
     })
+  },
+
+  onBindFocus: function(event){
+    this.setData({
+      containerShow: false,
+      searchPanelShow: true
+    })
+  },
+   
+  onBindChange: function(event){
+    console.log("onBindChange")
   },
 
   getMovieListData: function (url, settedKey, catetoryTitle) {
