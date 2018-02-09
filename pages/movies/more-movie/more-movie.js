@@ -56,7 +56,7 @@ Page({
       movies.push(temp)
     }
     var totalMovies = {}
-    // 如果要绑定新加载的数据，那么需要同旧有的数据合并在一起
+    // 如果要绑定新加载的数据，那么需要同之前的数据合并在一起
     if (!this.data.isEmpty) {
       totalMovies = this.data.movies.concat(movies)
     }
@@ -70,11 +70,12 @@ Page({
       movies: totalMovies,
       totalCount: this.data.totalCount += 20
     })
-    console.log(this.data)
+    wx.hideNavigationBarLoading()
   },
   
   onScrollLower: function(event){
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20"
     util.getMovieListData(nextUrl, this.processDoubanData)
+    wx.showNavigationBarLoading()
   }
 })
