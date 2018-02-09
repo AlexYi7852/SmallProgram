@@ -12,6 +12,24 @@ function convertToStarsArray(stars) {
   return array
 }
 
+function getMovieListData(url, callBack) {
+  var that = this
+  wx.request({
+    url: url,
+    method: "GET", 
+    header: {
+      "Content-Type": ""
+    },
+    success: function (res) {
+      callBack(res.data.subjects)
+    },
+    fail: function (res) {
+      console.log('failed')
+    }
+  })
+}
+
 module.exports = {
-  convertToStarsArray: convertToStarsArray
+  convertToStarsArray: convertToStarsArray,
+  getMovieListData: getMovieListData
 }

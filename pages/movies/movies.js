@@ -15,10 +15,10 @@ Page({
     var dataCount = "?start=0&count=3"
     var inTheatersURL = doubanBase + "/v2/movie/in_theaters" + dataCount // 正在热映
     var comingSoonURL = doubanBase + "/v2/movie/coming_soon" + dataCount // 即将上映
-    var top250URL = doubanBase + "/v2/movie/top250" + dataCount
+    var top250URL = doubanBase + "/v2/movie/top250" + dataCount // 豆瓣Top250
     this.getMovieListData(inTheatersURL, "inTheaters", "正在热映")
     this.getMovieListData(comingSoonURL, "comingSoon", "即将上映")
-    this.getMovieListData(top250URL, "top250", "Top250")
+    this.getMovieListData(top250URL, "top250", "豆瓣Top250")
   },
 
   onMoreTap: function(event){
@@ -35,7 +35,7 @@ Page({
       method: "GET", // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       // 设置请求的header
       header: {
-        "Content-Type": "application/json"
+        "Content-Type": ""
       },
       success: function (res) {
         // success
