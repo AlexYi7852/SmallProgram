@@ -7,7 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movies: {}
+    movies: {},   
+    totalCount: 0,
+    requestUrl: '',
+    isEmpty: true
   },
 
   /**
@@ -31,6 +34,7 @@ Page({
         dataUrl = doubanBase + "/v2/movie/top250"
         break;
     }
+    this.setData({ requestUrl: dataUrl })
     util.getMovieListData(dataUrl, this.processDoubanData)
   },
 
@@ -51,8 +55,26 @@ Page({
       }
       movies.push(temp)
     }
+    var totalMovies = {}
+    // 如果要绑定新加载的数据，那么需要同旧有的数据合并在一起
+    if (!this.data.isEmpty) {
+      totalMovies = this.data.movies.concat(movies)
+    }
+    else {
+      totalMovies = movies
+      this.setData({
+        isEmpty: false
+      })
+    }
     this.setData({
-      movies: movies
+      movies: totalMovies,
+      totalCount: this.data.totalCount += 20
     })
+    console.log(this.data)
+  },
+  
+  onScrollLower: function(event){
+    var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20"
+    util.getMovieListData(nextUrl, this.processDoubanData)
   }
 })
