@@ -2,7 +2,8 @@
 <import src="movie-grid/movie-grid-template.wxml" />
 <view class='search'>
   <icon type="search" class='search-img' size="13" color="#405f80"></icon>
-  <input type="text" placeholder='血战刚巨冷、你的名字' placeholder-class='placeholder' bindfocus='onBindFocus' bindchange="onBindChange"></input>
+  <input type="text" placeholder='血战刚巨冷、你的名字' placeholder-class='placeholder' bindfocus='onBindFocus' bindconfirm="onBindChange"></input>
+  <!-- bindblur、bindconfirm 和 bindchange的区别： bindblur、bindconfirm 只会在回车的时候触发，而bindchange失去焦点和回车都会触发 -->
   <image wx:if="{{ searchPanelShow }}" class="cancel-img" src='/images/icon/xx.png' bindtap='onCancelImgTap'></image>
 </view>
 <view class='container' wx:if="{{ containerShow }}">
@@ -18,5 +19,5 @@
 </view>
 
 <view class='search-panel' wx:if="{{ searchPanelShow }}">
-  <template is="movieGridTemplate" />
+  <template is="movieGridTemplate" data="{{ ...searchResult }}" />
 </view>

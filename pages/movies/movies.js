@@ -3,9 +3,10 @@ var app = getApp()
 
 Page({
   data: {
-    inTheaters: {},
-    comingSoon: {},
-    top250: {},
+    inTheaters: {},  // 正在热映的数据
+    comingSoon: {},  // 即将上映的数据
+    top250: {},  // 豆瓣Top250的数据
+    searchResult: {},  // 搜索的数据
     containerShow: true, // 控制电影页面显示状态
     searchPanelShow: false // 控制搜索页面显示状态
   },
@@ -33,7 +34,8 @@ Page({
   onCancelImgTap: function (event){
     this.setData({
       containerShow: true,
-      searchPanelShow: false
+      searchPanelShow: false,
+      searchResult: {}
     })
   },
 
@@ -44,9 +46,11 @@ Page({
       searchPanelShow: true
     })
   },
-  // 输入框失去焦点时触发
+  // 输入框失去焦点时触发,显示搜索页面
   onBindChange: function(event){
-    console.log("onBindChange")
+    var text = event.detail.value
+    var searchUrl = app.globalData.doubanBase + "/v2/movie/search?q=" + text
+    this.getMovieListData(searchUrl, "searchResult", "")
   },
   // 获取电影数据列表
   getMovieListData: function (url, settedKey, catetoryTitle) {
