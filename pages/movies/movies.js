@@ -21,6 +21,12 @@ Page({
     this.getMovieListData(top250URL, "top250", "Top250")
   },
 
+  onMoreTap: function(event){
+    wx.navigateTo({
+      url: 'more-movie/more-movie',
+    })
+  },
+
   getMovieListData: function (url, settedKey, catetoryTitle) {
     var that = this
     wx.request({
