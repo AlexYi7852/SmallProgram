@@ -58,6 +58,7 @@ Page({
   setMusicState: function(){
     // 监听音乐总控开关，改变头部图片
     var that = this
+    // 监听音乐播放
     wx.onBackgroundAudioPlay(function () {
       that.setData({
         isPlayingMusic: true
@@ -65,7 +66,16 @@ Page({
       app.globalData.g_isPlayingMusic = true
       app.globalData.g_currentMusicPostId = that.data.data.postId
     })
+    // 监听音乐暂停
     wx.onBackgroundAudioPause(function () {
+      that.setData({
+        isPlayingMusic: false
+      })
+      app.globalData.g_isPlayingMusic = false
+      app.globalData.g_currentMusicPostId = null
+    })
+    // 监听音乐停止
+    wx.onBackgroundAudioStop(function () {
       that.setData({
         isPlayingMusic: false
       })
@@ -157,7 +167,7 @@ Page({
       }
     })
   },
-
+  
   onMusicTap: function (event) {
     var postId = this.data.data.postId
     var data = postsData.postList[postId]

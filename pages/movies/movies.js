@@ -23,13 +23,21 @@ Page({
     this.getMovieListData(comingSoonURL, "comingSoon", "即将上映")
     this.getMovieListData(top250URL, "top250", "豆瓣Top250")
   },
-  
+  // 跳转电影类型更多页面
   onMoreTap: function(event){
     var catetory = event.currentTarget.dataset.catetory
     wx.navigateTo({
-      url: 'more-movie/more-movie?catetory=' + catetory,
+      url: 'more-movie/more-movie?catetory=' + catetory
     })
   },
+  // 跳转电影详情页面
+  onMovieTap: function (event) {
+    var movieId = event.currentTarget.dataset.movieid
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id=' + movieId
+    })
+  },
+
   // 关闭搜索页面回到电影页面
   onCancelImgTap: function (event){
     this.setData({

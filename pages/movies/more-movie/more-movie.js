@@ -40,8 +40,8 @@ Page({
 
   processDoubanData: function (moviesDouban) {
     var movies = []
-    for (var index in moviesDouban) {
-      var subject = moviesDouban[index]
+    for (var index in moviesDouban.subjects) {
+      var subject = moviesDouban.subjects[index]
       var title = subject.title
       if (title.length >= 6) {
         title = title.substring(0, 6) + "..."
