@@ -1,0 +1,4 @@
+<view class="container">
+  <image class='head-img' src="{{ movie.movieImg }}" mode="aspectFill"></image>
+  <text>img</text>
+</view>

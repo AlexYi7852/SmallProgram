@@ -46,8 +46,8 @@ Page({
       score: data.rating.average,  // 评分
       director: director, // 导演
       casts: util.convertToCastString(data.casts),  // 演员表
-      castsInfo: util.convertToCastInfos(data.casts),
-      summary: data.summary // 简介
+      castsInfo: util.convertToCastInfos(data.casts), // 演员表信息
+      summary: data.summary // 剧情简介
     }
     this.setData({ movie: movie })
     console.log(this.data.movie)

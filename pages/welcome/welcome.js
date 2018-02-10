@@ -12,7 +12,7 @@ Page({
     //   url: '../posts/posts',
     // });
 
-    wx.navigateTo({
+    wx.switchTab({
       url: '../posts/posts',
     })
   },
