@@ -1,6 +1,8 @@
 <import src="../movie/movie-template.wxml" />
 <template name="movieGridTemplate">
-  <view class='grid-container' scroll-y="true" scroll-x="false" onReachBottom="onReachBottom" >
+<!-- 使用bindscrolltolower，必须搭配使用的scroll-view会导致小程序"enablePullDownRefresh": true下拉不能使用
+解决方法，就是当两者同时存在时，改scroll-view为view，改bindscrolltolower绑定的函数为onReachBottom函数。 -->
+  <view class='grid-container' scroll-y="true" scroll-x="false" bindscrolltolower="onReachBottom" >
     <block wx:for="{{ movies }}" wx:key="" wx:for-item="movie">
       <view class='single-view-container'>
         <template is="movieTemplate" data="{{ ...movie }}" />

@@ -85,6 +85,8 @@ Page({
     wx.showNavigationBarLoading()
   },
   //上拉加载更多数据
+  // 使用bindscrolltolower，必须搭配使用的scroll - view会导致小程序"enablePullDownRefresh": true下拉不能使用
+  // 解决方法，就是当两者同时存在时，改scroll - view为view，改bindscrolltolower绑定的函数为onReachBottom函数。
   onReachBottom: function(event){
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20"
     util.getMovieListData(nextUrl, this.processDoubanData)
