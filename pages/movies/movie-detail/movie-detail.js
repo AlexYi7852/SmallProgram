@@ -38,7 +38,7 @@ Page({
       country: data.countries[0],  // 国家
       title: data.title, // 片名
       originalTitle: data.original_title, // 原名
-      wishCount: data.wish_count, // 点击数
+      wishCount: data.wish_count, // 多少人想看
       commentCount: data.comments_count, // 评论数
       year: data.year,
       genres: data.genres.join("、"),  // 题材
@@ -51,5 +51,13 @@ Page({
     }
     this.setData({ movie: movie })
     console.log(this.data.movie)
+  },
+  // 查看图片
+  viewMoviePostImg: function(e){
+    var src = e.currentTarget.dataset.src
+    wx.previewImage({
+      urls: [src], // 需要预览的图片http链接列表
+      current: src // 当前显示图片的http链接
+    })
   }
 })

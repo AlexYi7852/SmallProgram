@@ -38,6 +38,14 @@ Page({
     util.getMovieListData(dataUrl, this.processDoubanData)
   },
 
+  // 跳转电影详情页面
+  onMovieTap: function (event) {
+    var movieId = event.currentTarget.dataset.movieid
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + movieId
+    })
+  },
+
   processDoubanData: function (moviesDouban) {
     var movies = []
     for (var index in moviesDouban.subjects) {
