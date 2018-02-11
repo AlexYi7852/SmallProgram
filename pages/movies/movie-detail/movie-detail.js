@@ -9,6 +9,10 @@ Page({
     movie: {}
   },
 
+  // onBindChange: function(event){
+  //   console.log('onBindChange')
+  // },
+
   /**
    * 生命周期函数--监听页面加载
    */

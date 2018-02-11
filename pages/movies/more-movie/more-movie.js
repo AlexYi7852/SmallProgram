@@ -93,8 +93,9 @@ Page({
     wx.showNavigationBarLoading()
   },
   //上拉加载更多数据
-  // 使用bindscrolltolower，必须搭配使用的scroll - view会导致小程序"enablePullDownRefresh": true下拉不能使用
-  // 解决方法，就是当两者同时存在时，改scroll - view为view，改bindscrolltolower绑定的函数为onReachBottom函数。
+  // 使用bindscrolltolower，必须搭配使用的scroll-view会导致小程序"enablePullDownRefresh":
+  // true下拉不能使用解决方法，就是当两者同时存在时，改scroll-view为view，去掉scroll-view原有的属性，
+  // MINA在PAGE里面还提供了一个onReachBottom事件，使用这个来监听页面上滑到底
   onReachBottom: function(event){
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20"
     util.getMovieListData(nextUrl, this.processDoubanData)

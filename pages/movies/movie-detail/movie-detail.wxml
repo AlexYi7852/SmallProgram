@@ -18,6 +18,7 @@
     </view>
     <view class='flex-row'>
       <text class='mark'>评分</text>
+      <!-- <switch bingchange="onBindChange"></switch> -->
       <template is="starsTemplate" data="{{ stars: movie.stars, score: movie.score }}" />
     </view>
     <view class='flex-row'>
@@ -29,7 +30,7 @@
       <text>{{ movie.casts }}</text>
     </view>
     <view class="flex-row">
-      <text>类型</text>
+      <text class='mark'>类型</text>
       <text>{{ movie.genres }}</text>
     </view>
   </view>
