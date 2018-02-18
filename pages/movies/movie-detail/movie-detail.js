@@ -22,8 +22,8 @@ Page({
     var url = app.globalData.doubanBase + "/v2/movie/subject/" + movieId
     var movie = new Movie(url)
     var that = this
-    movie.getMovieData(function(movie){
-      that.setData({ movie: movie })
+    movie.getMovieData((movie) => {
+      this.setData({ movie: movie })
     })
   },
 

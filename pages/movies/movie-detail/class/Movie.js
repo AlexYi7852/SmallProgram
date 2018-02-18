@@ -7,7 +7,6 @@ class Movie {
 
   getMovieData(callBack) {
     this.callBack = callBack
-    console.log(this)
     util.getMovieListData(this.url, this.processDoubanData.bind(this))
   }
 
